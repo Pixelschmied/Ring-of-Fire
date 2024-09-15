@@ -1,11 +1,43 @@
 .field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     max-width: 100%;
     background-color: black;
 }
 
-.card-stack img {
-    width: 30px;
-    height: 30px;
+.card-stack {
+    position: relative;
+    img {
+        width: 92px;
+        height: 144px;
+        position: absolute;
+    }
+}
+
+.top-card {
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+    &:hover {
+        transform: scale(1.1) translateY(-7px);
+    }
+}
+
+.draw-card {
+    animation: draw-card-animation 1s ease-in-out;
+    transform: scale(1) translateX(150px) translateY(-175px) rotate(-6deg);
+}
+
+@keyframes draw-card-animation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5) translateX(75px) translateY(-87.5px) rotate(-3deg);
+    }
+    100% {
+        transform: scale(1) translateX(150px) translateY(-175px) rotate(-6deg);
+    }
 }
