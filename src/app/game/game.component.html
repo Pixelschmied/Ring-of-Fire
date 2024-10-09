@@ -1,9 +1,13 @@
 <div class="field">
     <div class="card-stack">
+        <!-- Shuffled undrawn card stack-->
         <img [ngStyle]="{'right.px': i*5}" *ngFor="let card of [0,1,2,3,4]; let i = index;" src="/assets/img/cards/backblack.png" alt="">
         <img (click)="drawCard()" class="top-card" style="right: 25px" src="/assets/img/cards/backblack.png" alt="">
 
-        <img *ngIf="drawCardAnimation" class="draw-card" style="right: 25px" src="/assets/img/cards/{{currentCard}}.png" alt="">
+        <!-- Stack for played Cards-->
+        <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/cards/{{card}}.png" alt="">
 
+        <!-- Draw Card Animation-->
+        <img *ngIf="drawCardAnimation" class="draw-card" style="right: 25px" src="/assets/img/cards/{{currentCard}}.png" alt="">
     </div>
 </div>

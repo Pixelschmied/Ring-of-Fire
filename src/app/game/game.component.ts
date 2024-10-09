@@ -7,27 +7,36 @@ import { Game } from '../../models/game';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './game.component.html',
-  styleUrl: './game.component.scss'
+  styleUrl: './game.component.scss',
 })
-
 export class GameComponent implements OnInit {
   drawCardAnimation = false;
   game!: Game;
-  currentCard: string | undefined = '';
+  currentCard: string = '';
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.newGame();
   }
 
   newGame() {
     this.game = new Game();
-    console.log(this.game)
+    console.log(this.game);
   }
 
   drawCard() {
-    this.currentCard = this.game.stack.pop();
-    this.drawCardAnimation = true;
-    console.log(this.currentCard)
-  }
+    if (!this.drawCardAnimation) {
+      let poppedCard = this.game.stack.pop();
+      if (poppedCard !== undefined) {
+        this.currentCard = poppedCard;
+        this.drawCardAnimation = true;
+        console.log(this.game.stack);
+        console.log(this.game.playedCards);
 
+        setTimeout(() => {
+          this.drawCardAnimation = false;
+          this.game.playedCards.push(this.currentCard);
+        }, 1000);
+      }
+    }
+  }
 }
