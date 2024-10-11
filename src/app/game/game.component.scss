@@ -46,3 +46,8 @@
         transform: scale(1) translateX(150px) translateY(-175px) rotate(-6deg);
     }
 }
+
+.player-position {
+    position: absolute;
+    right: 0;
+}
